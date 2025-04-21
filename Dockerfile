@@ -8,8 +8,8 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies (Faiss might need libomp)
-RUN apt-get update && apt-get install -y --no-install-recommends libomp5 && \
+# Install system dependencies (Faiss might need libomp, pip needs git for git+ URLs)
+RUN apt-get update && apt-get install -y --no-install-recommends libomp5 git && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container at /app
